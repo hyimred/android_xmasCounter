@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">xmasCounter</string>
-    <string name="szamlaloformatum">%3d nap %2d:%2d:%2d</string>
+    <string name="app_name">When Come Padoru?</string>
+    <string name="szamlaloformatum">%3d day\n%2dh %2dm %2ds</string>
 </resources>

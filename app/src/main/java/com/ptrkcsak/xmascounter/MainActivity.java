@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        init();
     }
 
     public void init() {
@@ -28,11 +29,11 @@ public class MainActivity extends AppCompatActivity {
         int honap = most.get(Calendar.MONTH);
         int nap = most.get(Calendar.DATE);
 
-        if (honap == 11 && nap == 24){
+        if (honap == 11 && nap == 24) {
             ev++;
         }
         Calendar karacsony_calendar = Calendar.getInstance();
-        karacsony_calendar.set(ev,11,24,0,0,0);
+        karacsony_calendar.set(ev, 11, 24, 0, 0, 0);
         karacsony = karacsony_calendar.getTime();
     }
 
@@ -69,5 +70,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         timer.schedule(task,0,500);
+
     }
 }
