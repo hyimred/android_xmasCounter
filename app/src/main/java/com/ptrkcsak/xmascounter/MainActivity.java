@@ -37,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        timer.cancel();
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         timer = new Timer();
