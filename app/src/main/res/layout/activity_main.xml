@@ -9,8 +9,9 @@
 
     <TextView
         android:id="@+id/szamlalo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
         android:padding="15sp"
         android:background="#FF0033"
         android:fontFamily="@font/carter_one"
@@ -23,15 +24,19 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
-        android:layout_width="wrap_content"
         android:id="@+id/kep"
-        android:layout_height="wrap_content"
-        android:src="@drawable/download"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:src="@drawable/nero"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/szamlalo" />
+        app:layout_constraintTop_toBottomOf="@id/szamlalo"
+        android:clickable="true"
+        android:onClick="onImageClick"
+        android:focusable="true" />
 
     <com.jetradarmobile.snowfall.SnowfallView
         android:layout_width="match_parent"

@@ -2,7 +2,9 @@ package com.ptrkcsak.xmascounter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -14,12 +16,17 @@ public class MainActivity extends AppCompatActivity {
     private TextView szamlalo;
     private Timer timer;
     private Date karacsony;
+    private MediaPlayer mediaPlayer;
+    private boolean isMusicOn = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+        mediaPlayer = MediaPlayer.create(this, R.raw.bg_music);
+        mediaPlayer.setVolume(0.5f, 0.5f);
+        mediaPlayer.setLooping(true);
     }
 
     public void init() {
@@ -36,13 +43,30 @@ public class MainActivity extends AppCompatActivity {
         karacsony_calendar.set(ev, 11, 24, 0, 0, 0);
         karacsony = karacsony_calendar.getTime();
     }
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mediaPlayer.start();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+        }
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+        }
+    }
     @Override
     protected void onStop() {
         super.onStop();
         timer.cancel();
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -71,5 +95,13 @@ public class MainActivity extends AppCompatActivity {
         };
         timer.schedule(task,0,500);
 
+    }
+    public void onImageClick(View view) {
+        if (isMusicOn) {
+            mediaPlayer.pause();
+        } else {
+            mediaPlayer.start();
+        }
+        isMusicOn = !isMusicOn;
     }
 }
