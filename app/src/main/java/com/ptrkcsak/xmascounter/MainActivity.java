@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+//Padoru
 public class MainActivity extends AppCompatActivity {
     private TextView szamlalo;
     private Timer timer;
